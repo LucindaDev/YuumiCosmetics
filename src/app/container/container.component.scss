@@ -1,103 +1,35 @@
 .container {
-    --bg-color: color-mix(in srgb, rgb(126, 172, 27) 15%, rgb(255, 254, 254) 85%);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        'grid-menu grid-header'
-        'grid-menu grid-main';
-    height: 100vh;
+    background-color: rgba(247, 233, 249, 0.683);
+    height: 100%;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: row;
 }
 
 .grid-header {
-    padding: 0 10px;
-    grid-area: grid-header;
-    background-color: #88ab42;
+    background-color: #000000f5;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 150px;
 }
 
 .grid-menu {
-    grid-area: grid-menu;
+    background-color: #ffffffe5;
+    width: 200px;
+    position: absolute;
 }
 
 .grid-main {
-    grid-area: grid-main;
-    padding: 20px;
-    background-color: var(--bg-color);
-
-    .main {
-        h1 {
-            color: #556b2f;
-            margin: 0;
-        }
-
-        input {
-            padding: 5px;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        .main__input-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: start;
-            width: 100%;
-            gap: 10px;
-            padding: 20px 0;
-
-            .main__span {
-                color: #556b2f;
-                font-size: 20px;
-            }
-
-            .main__button {
-                padding: 5px;
-                background-color: #88ab42;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-        }
-    }
-}
-
-
-
-.menu {
-    background-color: #6b8e23;
-    color: white;
+    width: 100%;
     height: 100%;
-
-
-    &-logo {
-        .logo {
-            width: 200px;
-            height: fit-content;
-        }
-    }
-
-    .menu-ul {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        padding: 20px;
-        margin: 0;
-    }
-
-    .menu-ul-item {
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 8px;
-        transition: .2s;
-
-        &:hover {
-            background-color: #556b2f;
-            color: white;
-        }
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--bg-color);
+    padding-top: 30px;
+    align-self: center;
 }
