@@ -2,14 +2,36 @@
     <form class="main__form">
         <h2>¿TIENES DUDAS?</h2>
         <div class="main__form-div">
-            <input class="main__form-input" type="text" name="username" minlength="4" placeholder="Nombre y Apellido" [(ngModel)]="inputName">
-            <input type="text" class="main__form-input" placeholder="Número de teléfono">
+            <input 
+                class="main__form-input" 
+                type="text" 
+                name="username" 
+                minlength="4" 
+                placeholder="Nombre y Apellido" 
+                [(ngModel)]="inputNombre"
+            >
+            
+            <input 
+            type="text" 
+            class="main__form-input" 
+            placeholder="Número de teléfono" 
+            [(ngModel)]="inputNumTelefono"
+            >
+
         </div>
         <div class="main__form-div">
-            <input class="main__form-input" type="email" id="email" name="email" placeholder="Correo electrónico">
+            <input 
+            class="main__form-input" 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Correo electrónico" 
+            [(ngModel)]="inputEmail"
+            >
+
         </div>
         <div class="main__form-div">
-            <textarea class="main__form-textarea" placeholder="Comentario"></textarea>
+            <textarea class="main__form-textarea" placeholder="Comentario" [(ngModel)]="inputComentario"></textarea>
         </div>
         <div class="main__form-div div-label">
             <label class="main__form-label">Suscríbete a nuestro newsletter</label>
