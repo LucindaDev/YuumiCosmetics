@@ -1,0 +1,20 @@
+<div class="form__container">
+    <form class="main__form">
+        <h2>¿TIENES DUDAS?</h2>
+        <div class="main__form-div">
+            <input class="main__form-input" type="text" name="username" minlength="4" placeholder="Nombre y Apellido" [(ngModel)]="inputName">
+            <input type="text" class="main__form-input" placeholder="Número de teléfono">
+        </div>
+        <div class="main__form-div">
+            <input class="main__form-input" type="email" id="email" name="email" placeholder="Correo electrónico">
+        </div>
+        <div class="main__form-div">
+            <textarea class="main__form-textarea" placeholder="Comentario"></textarea>
+        </div>
+        <div class="main__form-div div-label">
+            <label class="main__form-label">Suscríbete a nuestro newsletter</label>
+            <input type="checkbox" class="main__form-checkbox">
+        </div>
+        <button class="main__form-button" type="button" (click)="onSubmit()" id="form-button">Enviar</button>
+    </form>
+</div>

@@ -3,6 +3,15 @@ h1 {
     margin: 0;
 }
 
+.main__center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-top: 60px;
+}
+
 .main__welcome {
     display: flex;
     flex-direction: row;
@@ -50,10 +59,11 @@ h1 {
 }
 
 .main__sections {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding-top: 100px;
+    padding: 50px 0;
 
     label {
         font-size: 1.5rem;
@@ -128,6 +138,7 @@ h1 {
 }
 
 .cards {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -135,13 +146,23 @@ h1 {
 }
 
 .main__best-selling {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-top: 100px;
     color: #23142fd1;
     font-size: 1.3rem;
+
+    h2 {
+        font-size: 1.5rem;
+        margin: 0;
+        padding: 50px;
+    }
+
+    .card__price, .card__title {
+        padding: 0;
+    }
 }
 
 .main__product-card {
@@ -221,7 +242,6 @@ h1 {
 
 .main__reviews {
     text-align: center;
-    margin-top: 50px;
     color: #23142fd1;
     font-size: .9rem;
     width: 100%;
@@ -229,11 +249,13 @@ h1 {
 
     h2 {
         font-size: 1.5rem;
-        margin-bottom: 100px;
+        margin: 0;
+        padding: 50px;
     }
 
     .main__reviews-cards {
         width: 100%;
+        padding: 50px 0;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
