@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { InicioComponent } from './inicio.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
     InicioComponent,
     FormularioComponent
   ],
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   exports: [
     InicioComponent
   ]

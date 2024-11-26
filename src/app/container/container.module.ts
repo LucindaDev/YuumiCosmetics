@@ -5,7 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
 import { CommonModule } from '@angular/common';
 import { InicioModule } from '../inicio/inicio.module';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -18,7 +18,7 @@ import { InicioModule } from '../inicio/inicio.module';
 
   ],
   imports: [
-    CommonModule, InicioModule
+    CommonModule, InicioModule, SweetAlert2Module
   ],
   exports: [ContainerComponent]
 })

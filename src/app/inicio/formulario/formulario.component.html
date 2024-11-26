@@ -1,5 +1,5 @@
 <div class="form__container">
-    <form class="main__form">
+    <form class="main__form" [formGroup]="usuarioForm">
         <h2>¿TIENES DUDAS?</h2>
         <div class="main__form-div">
             <input 
@@ -8,14 +8,14 @@
                 name="username" 
                 minlength="4" 
                 placeholder="Nombre y Apellido" 
-                [(ngModel)]="inputNombre"
+                formControlName="nombre"
             >
             
             <input 
             type="text" 
             class="main__form-input" 
             placeholder="Número de teléfono" 
-            [(ngModel)]="inputNumTelefono"
+            formControlName="numero"
             >
 
         </div>
@@ -26,17 +26,27 @@
             id="email" 
             name="email" 
             placeholder="Correo electrónico" 
-            [(ngModel)]="inputEmail"
+            formControlName="email"
             >
 
         </div>
         <div class="main__form-div">
-            <textarea class="main__form-textarea" placeholder="Comentario" [(ngModel)]="inputComentario"></textarea>
+            <textarea 
+            class="main__form-textarea" 
+            placeholder="Comentario"
+            formControlName="comentario"
+            maxlength="200"
+            >
+            </textarea>
         </div>
         <div class="main__form-div div-label">
             <label class="main__form-label">Suscríbete a nuestro newsletter</label>
-            <input type="checkbox" class="main__form-checkbox">
+            <input 
+            type="checkbox" 
+            class="main__form-checkbox"
+            formControlName="suscripcion"
+            >
         </div>
-        <button class="main__form-button" type="button" (click)="onSubmit()" id="form-button">Enviar</button>
+        <button class="main__form-button" type="button" id="form-button" (click)="onClick()" >Enviar</button>
     </form>
 </div>
