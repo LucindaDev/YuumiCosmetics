@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario',
@@ -8,25 +11,35 @@ import { Component } from '@angular/core';
 export class FormularioComponent {
   constructor() { }
 
-  inputNombre = '';
-  inputNumTelefono = '';
-  inputEmail = '';
-  inputComentario = '';
+  usuarioForm = new FormGroup({
+    nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    numTelefono: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    comentario: new FormControl('', [Validators.maxLength(200)]),
+    suscripcion: new FormControl('')
+  });
 
-  usuarioData = {
-    nombre: '',
-    numTelefono: '',
-    email: '',
-    comentario: '' 
+  ngOnInit() {
+    
   }
 
-  onSubmit() {
-    this.usuarioData = {
-      nombre: this.inputNombre,
-      numTelefono: this.inputNumTelefono,
-      email: this.inputEmail,
-      comentario: this.inputComentario
-    }
-    console.log('Datos del Usuario: ', this.usuarioData);
+  onClick() {
+    if (this.usuarioForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Formulario inválido',
+        text: 'Por favor, complete todos los campos correctamente.'
+      });
+
+      return
+    } 
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Datos enviados',
+      text: 'Sus datos han sido enviados correctamente.'
+    });
+
+    this.usuarioForm.reset();
   }
 }
