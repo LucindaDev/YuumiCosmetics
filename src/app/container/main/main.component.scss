@@ -5,21 +5,14 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    gap: 20px;
 }
 
-.main__footer {
+.main__center {
     width: 100%;
-    background-color: #845aa761;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 1.1rem;
-    color: #23142fd1;
-    text-align: center;
-
-    a {
-        color: #7a1cc7d1;
-        text-decoration: none;
-    }
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 50px;
 }

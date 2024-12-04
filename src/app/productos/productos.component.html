@@ -1,0 +1,20 @@
+<div class="cards__container">
+    @for (producto of productos; track $index) {
+        <div class="main__product-card">
+            <img src="/blush-liquido.webp" alt="blush-liquido">
+            <div class="card__title-container">
+                <h2 class="card__title">{{producto.nombre}}</h2>
+            </div>
+            <p class="card__description">{{producto.descripcion}}</p>
+            <div class="card__product-stars">
+                <img class="stars" src="/estrellas.png" alt="stars">
+            </div>
+            <h2 class="card__price"> MXN $ {{producto.precio}}.00</h2>
+            <div class="card__buttons">
+                <button class="card__button">Agregar al carrito</button>
+                <button class="card__button">Comprar ahora</button>
+            </div>
+        </div>
+    }
+</div>
+

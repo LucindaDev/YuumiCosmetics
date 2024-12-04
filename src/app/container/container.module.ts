@@ -12,13 +12,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     ContainerComponent,
-    HeaderComponent,
-    MenuComponent,
-    MainComponent,    
-
+    MenuComponent
   ],
   imports: [
-    CommonModule, InicioModule, SweetAlert2Module
+    CommonModule, InicioModule, SweetAlert2Module, MainComponent,HeaderComponent
   ],
   exports: [ContainerComponent]
 })

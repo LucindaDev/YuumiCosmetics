@@ -11,5 +11,5 @@ export class FormService {
   sendForm(data: any) {
     return this.http.post('http://localhost:8080/form', data);
   }
-
+  
 }

@@ -3,15 +3,6 @@ h1 {
     margin: 0;
 }
 
-.main__center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    padding-top: 60px;
-}
-
 .main__welcome {
     display: flex;
     flex-direction: row;
@@ -166,11 +157,11 @@ h1 {
 }
 
 .main__product-card {
-    background-color: #fff;
+    background-color: #ffffff1c;
     width: 250px;
     height: 500px;
     padding: 20px;
-    box-shadow: 0 0 10px #00000027;
+    box-shadow: 0 0 10px #00000018;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -237,7 +228,7 @@ h1 {
 }
 
 .main__product-card:hover {
-    box-shadow: 0 0 15px #00000027;
+    box-shadow: 0 0 15px #00000020;
 }
 
 .main__reviews {
@@ -246,6 +237,7 @@ h1 {
     font-size: .9rem;
     width: 100%;
     text-wrap: pretty;
+    background-color: #ffffff1c;
 
     h2 {
         font-size: 1.5rem;
