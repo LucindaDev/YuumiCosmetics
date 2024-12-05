@@ -1,1 +1,20 @@
 <app-container></app-container>
+@if (shouldShowFooter()) {
+    <footer class="main__footer">
+        <label class="contactos">¿Necesitas ayuda? <a class="contacto" href="mailto: lucindadev@gmail.com">Envíanos
+                un correo</a> ó <a class="contacto" href="tel:+526672293578">Llámanos</a>.</label>
+        <div class="footer__social">
+            <label for="">Síguenos en: </label>
+            <div class="imgs">
+                <a href="https://www.facebook.com" target="_blank"><img src="/facebook.png" alt="facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="/instagram.png" alt="instagram"></a>
+                <a href="https://www.twitter.com" target="_blank"><img src="/X.png" alt="X"></a>
+                <a href="https://www.tiktok.com" target="_blank"><img src="/tik-tok.png" alt="tiktok"></a>
+            </div>
+            <div class="whatsapp">
+                <label for="">Mándanos un mensaje!</label>
+                <a href="https://web.whatsapp.com" target="_blank"><img src="/whatsapp.png" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </footer>
+}

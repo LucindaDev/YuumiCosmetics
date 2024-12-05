@@ -9,16 +9,22 @@
 }
 
 .main__product-card {
+    color: #23142fd1;
     background-color: #ffffff1c;
     width: 250px;
-    height: 500px;
-    padding: 20px;
+    height: 450px;
+    padding: 10px;
     box-shadow: 0 0 10px #00000018;
     display: flex;
     flex-direction: column;
-    gap: 5px;
     justify-content: space-evenly;
-    text-align: center;
+    gap: 5px;
+
+    .card__categoria{
+        margin: 0;
+        text-align: center;
+        font-size: .9rem;
+    }
 
     .card__product-stars {
         display: flex;
@@ -38,22 +44,35 @@
         aspect-ratio: 1;
     }
 
+    .product__img {
+        width: 200px;
+        height: 200px;
+        background: url(/blush-liquido.webp) no-repeat center center;
+        background-size: cover;
+    }
+
     .card__title-container {
+        text-align: center;
         display: flex;
-        justify-content: center;
         align-items: center;
-        height: 30px;
+        height: 60px;
+
+        .card__title {
+            width: 100%;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
     }
 
     h2 {
-        font-size: 1rem;
+        align-self: center;
         margin: 0;
     }
 
     p {
         margin: 0;
         font-size: .9rem;
-        height: 100px;
+        height: 80px;
     }
 
     button {
@@ -74,5 +93,16 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+    }
+}
+.main__product-card:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: .3s;
+
+    .product__img {
+        transition: .4s linear all 0s;  
+        background: url(/blush-hover.webp) no-repeat center center;
+        background-size: cover;
     }
 }

@@ -11,6 +11,6 @@ export const routes: Routes = [
         path: 'productos', component: ProductosComponent
     },
     {
-        path: 'configuracion', component: AdministradorComponent
+        path: 'administrador', component: AdministradorComponent
     }
 ];

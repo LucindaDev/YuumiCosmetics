@@ -4,12 +4,14 @@ import { AdministradorComponent } from '../administrador/administrador.component
 
 
 
+
+
 @NgModule({
   declarations: [
-    AdministradorComponent
+
   ],
   imports: [
-    CommonModule
+    CommonModule, AdministradorComponent
   ]
 })
 export class AdministradorModule { }

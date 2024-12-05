@@ -24,7 +24,7 @@ export class ProductosComponent {
                     title: 'Error',
                     text: 'Error al obtener los productos',
                 });
-                
+
                 console.log('success: false', error);
             }
         );
