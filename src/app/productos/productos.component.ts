@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductosService } from '../services/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-productos',
@@ -8,47 +9,26 @@ import { ProductosService } from '../services/productos.service';
 })
 export class ProductosComponent {
 
-    constructor(productosService: ProductosService ) { }
+    constructor(private productosService: ProductosService ) { }
 
-    
+    productos: any = [];
 
-    productos: any = [
-        {
-            "nombre": "Base de Maquillaje Líquida",
-            "marca": "Maybelline",
-            "precio": 1000,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        },
-        {
-            "nombre": "Brochas de Maquillaje",
-            "marca": "Real Techniques",
-            "precio": 240,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        },
-        {
-            "nombre": "Crema Hidratante",
-            "marca": "Nivea",
-            "precio": 420,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        },
-        {
-            "nombre": "Gel Limpiador Facial",
-            "marca": "La Roche-Posay",
-            "precio": 250,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        },
-        {
-            "nombre": "Labial Mate",
-            "marca": "MAC",
-            "precio": 350,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        },
-        {
-            "nombre": "Perfume Floral",
-            "marca": "Chanel",
-            "precio": 200,
-            "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus adipisci corrupti, vitae fugit facilis cumque voluptate quos tempore."
-        }
-    ];
+    ngOnInit() {
+        this.productosService.getProducts().subscribe(
+            (response: any) => {
+                this.productos = response;
+            },
+            (error: any) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al obtener los productos',
+                });
+                
+                console.log('success: false', error);
+            }
+        );
+    }
+
 
 }
