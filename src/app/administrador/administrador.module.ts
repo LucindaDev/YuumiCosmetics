@@ -6,6 +6,7 @@ import { AdministradorComponent } from '../administrador/administrador.component
 
 
 
+
 @NgModule({
   declarations: [
 

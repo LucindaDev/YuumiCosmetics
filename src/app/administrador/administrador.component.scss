@@ -1,3 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+        background-color: var(--primary-color);
+    }
+}
+
 .tabla {
     margin-top: 20px;
     width: 100%;
@@ -10,5 +20,10 @@
         color: #000;
         text-align: center;
         vertical-align: middle;
+    }
+
+    button {
+        background-color: transparent;
+        box-shadow: none;
     }
 }
