@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { FormService } from '../../services/form.service';
 
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',

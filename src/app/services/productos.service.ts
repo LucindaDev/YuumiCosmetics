@@ -12,4 +12,20 @@ export class ProductosService {
     return this.http.get('http://localhost:8080/productos');
   }
 
+  addProduct(product: any) {
+    return this.http.post('http://localhost:8080/productos', product);
+  }
+
+  getCategorias() {
+    return this.http.get('http://localhost:8080/categorias');
+  }
+
+  getSubcategorias() {
+    return this.http.get('http://localhost:8080/subcategorias');
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete(`http://localhost:8080/productos/${id}`);
+  }
+
 }

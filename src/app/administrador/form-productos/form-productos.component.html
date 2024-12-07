@@ -1,39 +1,48 @@
-<h2 mat-dialog-title>AGREGAR PRODUCTO</h2>
-<mat-dialog-content class="mat-typography">
-    <form>
-        <mat-form-field>
-            <mat-label>Nombre del producto: </mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Marca: </mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Categoría: </mat-label>
-            <mat-select>
-                <mat-option value="accesorios">Accesorios</mat-option>
-                <mat-option value="accesorios-de-belleza">Accesorios de belleza</mat-option>
-                <mat-option value="cabello">Cabello</mat-option>
-                <mat-option value="cuidado-de-piel">Cuidado de la piel</mat-option>
-                <mat-option value="maquillaje">Maquillaje</mat-option>
-                <mat-option value="perfumes">Perfumes</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Subcategoría: </mat-label>
-            <mat-select>
-                <mat-option value="bases">Bases</mat-option>
-                <mat-option value="brochas-de-maquillaje">Brochas de maquillaje</mat-option>
-                <mat-option value="cremas">Cremas</mat-option>
-                <mat-option value="labiales">Labiales</mat-option>
-                <mat-option value="limpieza-facial">Limpieza facial</mat-option>
-                <mat-option value="perfumes-para-mujer">Perfumes para mujer</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-</mat-dialog-actions>
+<div class="form__container">
+    <h2 mat-dialog-title class="title">AGREGAR PRODUCTO</h2>
+    <mat-dialog-content class="mat-typography">
+        <form class="form__products" [formGroup]="productoForm">
+            <mat-form-field>
+                <mat-label>Nombre del producto: </mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Marca: </mat-label>
+                <input matInput formControlName="marca">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Categoría: </mat-label>
+                <mat-select formControlName="id_categoria">
+                    @for (categoria of categorias; track $index) {
+                    <mat-option [value]="categoria.id">{{ categoria.nombre
+                        }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Subcategoría: </mat-label>
+                <mat-select formControlName="id_subcategoria">
+                    @for (subcategoria of subcategorias; track $index) {
+                    <mat-option [value]="subcategoria.id">{{ subcategoria.nombre }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field floatLabel="always">
+                <mat-label>Precio: </mat-label>
+                <input matInput type="text" class="example-right-align" placeholder="0"
+                    (keydown)="validateNumber($event)" formControlName="precio" />
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Descripción: </mat-label>
+                <input matInput maxlength="200" formControlName="descripcion">
+            </mat-form-field>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Guardar</button>
+    </mat-dialog-actions>
+
+</div>
