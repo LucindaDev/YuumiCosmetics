@@ -1,10 +1,22 @@
+<div class="tablas__checkbox">
+    <h4>SELECCIONAR TABLA</h4>
+    <div>
+        <label>Productos</label><input type="radio" name="tabla">
+    </div>
+    <div>
+        <label>Categorías</label><input type="radio" name="tabla">
+    </div>
+    <div>
+        <label>Subcategorías</label><input type="radio" name="tabla">
+    </div>
+</div>
+
 <div class="container">
     <h1>PRODUCTOS</h1>
-    <button mat-raised-button color="secondary" (click)="openDialog()">Agregar Producto
+    <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Producto
         <mat-icon fontIcon="add"></mat-icon>
     </button>
 </div>
-
 
 <mat-table #table [dataSource]="dataSource" class="tabla">
 
@@ -47,10 +59,10 @@
     <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-mini-fab aria-label="Example icon button with a menu icon">
+            <button mat-mini-fab aria-label="Editar producto" (click)="openDialog(element.id)">
                 <mat-icon fontIcon="create"></mat-icon>
             </button>
-            <button mat-mini-fab aria-label="Example icon button with a menu icon" (click)="eliminarProducto(element.id)">
+            <button mat-mini-fab aria-label="Eliminar producto" (click)="eliminarProducto(element.id)">
                 <mat-icon fontIcon="delete"></mat-icon>
             </button>
         </td>

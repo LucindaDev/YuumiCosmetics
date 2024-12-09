@@ -6,9 +6,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { ProductosService } from '../../services/productos.service';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-form-productos',
@@ -24,7 +25,10 @@ export class FormProductosComponent {
   categorias: any[] = [];
   subcategorias: any[] = [];
 
-  constructor(private fb: FormBuilder, private productosService: ProductosService) {
+  constructor(private fb: FormBuilder, 
+    private productosService: ProductosService, 
+    public dialogRef: MatDialogRef<FormProductosComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     this.productoForm = this.fb.group({
       nombre: [''],
       marca: [''],
@@ -33,6 +37,8 @@ export class FormProductosComponent {
       precio: [''],
       descripcion: ['']
     });
+
+    console.log(data.id);
 
     this.loadCategorias();
     this.loadSubcategorias();

@@ -18,8 +18,12 @@ export class AdministradorComponent {
 
   readonly dialog = inject(MatDialog);
 
-  openDialog() {
-    const dialogRef = this.dialog.open(FormProductosComponent);
+  openDialog(id: number) {
+    const dialogRef = this.dialog.open(FormProductosComponent, {
+      data: { id: id }
+    });
+
+    console.log(id);
 
     dialogRef.componentInstance.productAdded.subscribe(() => {
       this.getProductos();

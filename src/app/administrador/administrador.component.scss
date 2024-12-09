@@ -1,4 +1,22 @@
+.tablas__checkbox {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    label {
+        margin-right: 10px;
+    }
+}
+
 .container {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,3 +45,4 @@
         box-shadow: none;
     }
 }
+
