@@ -1,20 +1,22 @@
-<nav class="menu">
-    <button (click)="toggleMenu()" class="menu-toggle" [ngClass]="{'open': isOpen, 'closed': !isOpen}">
-        Menú
-    </button>
-    <ul class="menu-ul" [ngClass]="{'open': isOpen, 'closed': !isOpen}">
-        <div class="menu-ul-item">Ver todo</div>
-        <div class="menu-ul-item">Novedades</div>
-        <div class="menu-ul-item">Los más valorados</div>
-        <div class="menu-ul-item">Maquillaje</div>
-        <div class="menu-ul-item">Accesorios de belleza</div>
-        <div class="menu-ul-item">Cabello</div>
-        <div class="menu-ul-item">Bolsa de maquillaje y organizadores</div>
-        <div class="menu-ul-item">Pelucas y accesorios</div>
-        <div class="menu-ul-item">Aparatos para cuidado personal</div>
-        <div class="menu-ul-item">Cuidado personal</div>
-        <div class="menu-ul-item">Esmalte de uñas</div>
-        <div class="menu-ul-item">Fragancias y aromaterapia</div>
-        <div class="menu-ul-item">Cuidados de salud</div>
-    </ul>
-</nav>
+@if (shouldShowMenu()) {
+    <nav class="menu">
+        <button (click)="toggleMenu()" class="menu-toggle" [ngClass]="{'open': isOpen, 'closed': !isOpen}">
+            Menú
+        </button>
+        <ul class="menu-ul" [ngClass]="{'open': isOpen, 'closed': !isOpen}">
+            <div class="menu-ul-item">Ver todo</div>
+            <div class="menu-ul-item">Novedades</div>
+            <div class="menu-ul-item">Los más valorados</div>
+            <div class="menu-ul-item">Maquillaje</div>
+            <div class="menu-ul-item">Accesorios de belleza</div>
+            <div class="menu-ul-item">Cabello</div>
+            <div class="menu-ul-item">Bolsa de maquillaje y organizadores</div>
+            <div class="menu-ul-item">Pelucas y accesorios</div>
+            <div class="menu-ul-item">Aparatos para cuidado personal</div>
+            <div class="menu-ul-item">Cuidado personal</div>
+            <div class="menu-ul-item">Esmalte de uñas</div>
+            <div class="menu-ul-item">Fragancias y aromaterapia</div>
+            <div class="menu-ul-item">Cuidados de salud</div>
+        </ul>
+    </nav>
+}
