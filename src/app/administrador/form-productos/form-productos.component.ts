@@ -38,11 +38,21 @@ export class FormProductosComponent {
       descripcion: ['']
     });
 
-    console.log(data.id);
-
     this.loadCategorias();
     this.loadSubcategorias();
+
+    this.productosService.getProductoId(data.id).subscribe(
+      (producto: any) => {
+        this.productoForm.patchValue(producto);
+        console.log(producto);
+      },
+      (error: any) => {
+        console.error('Error al cargar el producto', error);
+      }
+    );
+
   }
+
 
   loadCategorias() {
     this.productosService.getCategorias().subscribe(
@@ -89,6 +99,33 @@ export class FormProductosComponent {
       return
     } 
 
+    if(this.data.id>0){
+      this.productosService.updateProduct(this.data.id, this.productoForm.value).subscribe(
+        (response: any) => {
+        if (response.success) {
+          Swal.fire({
+          icon: 'success',
+          title: 'Producto actualizado',
+          text: 'El producto ha sido actualizado correctamente.'
+          });
+          this.productoForm.reset();
+          this.productAdded.emit();
+        } else {
+          Swal.fire({
+          icon: 'error',
+          title: 'Error al actualizar producto',
+          text: 'Hubo un problema al actualizar el producto. Por favor, intente nuevamente.'
+          });
+        }
+        },
+        (error: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al actualizar producto',
+          text: 'Hubo un problema al actualizar el producto. Por favor, intente nuevamente.'
+        });
+      });
+    }else{      
     this.productosService.addProduct(this.productoForm.value).subscribe(
       (response: any) => {
       if (response.success) {
@@ -114,7 +151,7 @@ export class FormProductosComponent {
         text: 'Hubo un problema al agregar el producto. Por favor, intente nuevamente.'
       });
     });
-
+  }
     
   }
 

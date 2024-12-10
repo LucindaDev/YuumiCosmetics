@@ -28,4 +28,12 @@ export class ProductosService {
     return this.http.delete(`http://localhost:8080/productos/${id}`);
   }
 
+  getProductoId(id: number) {
+    return this.http.get(`http://localhost:8080/productos/${id}`);
+  }
+
+  updateProduct(id: number, product: any) {
+    return this.http.put(`http://localhost:8080/productos/${id}`, product);
+  }
+
 }
