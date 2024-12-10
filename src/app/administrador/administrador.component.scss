@@ -1,3 +1,10 @@
+.main__container {
+    width: 1125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .tablas__checkbox {
     width: 200px;
     display: flex;
@@ -16,19 +23,27 @@
 }
 
 .container {
+    width: fit-content;
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 
     button {
         background-color: var(--primary-color);
     }
+
+    .titulo{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
 }
 
 .tabla {
     margin-top: 20px;
-    width: 100%;
+    width: fit-content;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;

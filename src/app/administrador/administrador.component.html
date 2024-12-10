@@ -1,74 +1,150 @@
-<div class="tablas__checkbox">
-    <h4>SELECCIONAR TABLA</h4>
-    <div>
-        <label>Productos</label><input type="radio" name="tabla">
+<div class="main__container">
+
+    <!-- CHECKBOX PARA SELECCIONAR TABLA -->
+
+    <div class="tablas__checkbox">
+        <h4>SELECCIONAR TABLA</h4>
+        <div>
+            <label>Productos</label><input type="radio" name="tabla" (change)="selectTable('productos')" checked>
+        </div>
+        <div>
+            <label>Categorías</label><input type="radio" name="tabla" (change)="selectTable('categorias')">
+        </div>
+        <div>
+            <label>Subcategorías</label><input type="radio" name="tabla" (change)="selectTable('subcategorias')">
+        </div>
     </div>
-    <div>
-        <label>Categorías</label><input type="radio" name="tabla">
-    </div>
-    <div>
-        <label>Subcategorías</label><input type="radio" name="tabla">
-    </div>
-</div>
 
-<div class="container">
-    <h1>PRODUCTOS</h1>
-    <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Producto
-        <mat-icon fontIcon="add"></mat-icon>
-    </button>
-</div>
+    <!-- TABLA DE PRODUCTOS -->
 
-<mat-table #table [dataSource]="dataSource" class="tabla">
-
-
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="marca">
-        <th mat-header-cell *matHeaderCellDef> Marca </th>
-        <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="categoria">
-        <th mat-header-cell *matHeaderCellDef> Categoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="subcategoria">
-        <th mat-header-cell *matHeaderCellDef> Subcategoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.subcategoria}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="precio">
-        <th mat-header-cell *matHeaderCellDef> Precio </th>
-        <td mat-cell *matCellDef="let element">$ {{element.precio}}.00 </td>
-    </ng-container>
-
-    <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-mini-fab aria-label="Editar producto" (click)="openDialog(element.id)">
-                <mat-icon fontIcon="create"></mat-icon>
+    <div *ngIf="selectedTable === 'productos'" class="container">
+        <div class="titulo">
+            <h1>PRODUCTOS</h1>
+            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Producto
+                <mat-icon fontIcon="add"></mat-icon>
             </button>
-            <button mat-mini-fab aria-label="Eliminar producto" (click)="eliminarProducto(element.id)">
-                <mat-icon fontIcon="delete"></mat-icon>
+        </div>
+
+
+        <mat-table #table [dataSource]="dataSource" class="tabla">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="marca">
+                <th mat-header-cell *matHeaderCellDef> Marca </th>
+                <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="categoria">
+                <th mat-header-cell *matHeaderCellDef> Categoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="subcategoria">
+                <th mat-header-cell *matHeaderCellDef> Subcategoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.subcategoria}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                <td mat-cell *matCellDef="let element">$ {{element.precio}}.00 </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-mini-fab aria-label="Editar producto" (click)="openDialog(element.id)">
+                        <mat-icon fontIcon="create"></mat-icon>
+                    </button>
+                    <button mat-mini-fab aria-label="Eliminar producto" (click)="eliminarProducto(element.id)">
+                        <mat-icon fontIcon="delete"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <!-- TABLA DE CATEGORÍAS -->
+
+    <div *ngIf="selectedTable === 'categorias'" class="container">
+        <div class="titulo">
+            <h1>CATEGORÍAS</h1>
+            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Categoría
+                <mat-icon fontIcon="add"></mat-icon>
             </button>
-        </td>
-    </ng-container>
+        </div>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <mat-table #table [dataSource]="dataSourceCat" class="tabla">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-mini-fab aria-label="Editar categoría" (click)="openDialog(element.id)">
+                        <mat-icon fontIcon="create"></mat-icon>
+                    </button>
+                    <button mat-mini-fab aria-label="Eliminar categoría" (click)="eliminarProducto(element.id)">
+                        <mat-icon fontIcon="delete"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsCategorias"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsCategorias;"></tr>
+        </mat-table>
+    </div>
 
-</mat-table>
+    <!-- TABLA DE SUBCATEGORÍAS -->
+
+    <div *ngIf="selectedTable === 'subcategorias'" class="container">
+        <div class="titulo">
+            <h1>SUBCATEGORÍAS</h1>
+            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Subcategoría
+                <mat-icon fontIcon="add"></mat-icon>
+            </button>
+        </div>
+
+        <mat-table #table [dataSource]="dataSourceSubcat" class="tabla">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="categoria">
+                <th mat-header-cell *matHeaderCellDef> Categoría </th>
+                <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-mini-fab aria-label="Editar subcategoría" (click)="openDialog(element.id)">
+                        <mat-icon fontIcon="create"></mat-icon>
+                    </button>
+                    <button mat-mini-fab aria-label="Eliminar subcategoría" (click)="eliminarProducto(element.id)">
+                        <mat-icon fontIcon="delete"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsSubcategorias"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsSubcategorias;"></tr>
+        </mat-table>
+
+    </div>
