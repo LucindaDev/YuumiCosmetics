@@ -20,7 +20,7 @@
     <div *ngIf="selectedTable === 'productos'" class="container">
         <div class="titulo">
             <h1>PRODUCTOS</h1>
-            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Producto
+            <button mat-raised-button color="secondary" (click)="modalProducto(0)">Agregar Producto
                 <mat-icon fontIcon="add"></mat-icon>
             </button>
         </div>
@@ -60,7 +60,7 @@
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-mini-fab aria-label="Editar producto" (click)="openDialog(element.id)">
+                    <button mat-mini-fab aria-label="Editar producto" (click)="modalProducto(element.id)">
                         <mat-icon fontIcon="create"></mat-icon>
                     </button>
                     <button mat-mini-fab aria-label="Eliminar producto" (click)="eliminarProducto(element.id)">
@@ -79,7 +79,7 @@
     <div *ngIf="selectedTable === 'categorias'" class="container">
         <div class="titulo">
             <h1>CATEGORÍAS</h1>
-            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Categoría
+            <button mat-raised-button color="secondary" (click)="modalCategoria(0)">Agregar Categoría
                 <mat-icon fontIcon="add"></mat-icon>
             </button>
         </div>
@@ -96,10 +96,10 @@
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-mini-fab aria-label="Editar categoría" (click)="openDialog(element.id)">
+                    <button mat-mini-fab aria-label="Editar categoría" (click)="modalCategoria(element.id)">
                         <mat-icon fontIcon="create"></mat-icon>
                     </button>
-                    <button mat-mini-fab aria-label="Eliminar categoría" (click)="eliminarProducto(element.id)">
+                    <button mat-mini-fab aria-label="Eliminar categoría" (click)="eliminarCategoria(element.id)">
                         <mat-icon fontIcon="delete"></mat-icon>
                     </button>
                 </td>
@@ -114,7 +114,7 @@
     <div *ngIf="selectedTable === 'subcategorias'" class="container">
         <div class="titulo">
             <h1>SUBCATEGORÍAS</h1>
-            <button mat-raised-button color="secondary" (click)="openDialog(0)">Agregar Subcategoría
+            <button mat-raised-button color="secondary" (click)="modalSubcategoria(0)">Agregar Subcategoría
                 <mat-icon fontIcon="add"></mat-icon>
             </button>
         </div>
@@ -135,10 +135,10 @@
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-mini-fab aria-label="Editar subcategoría" (click)="openDialog(element.id)">
+                    <button mat-mini-fab aria-label="Editar subcategoría" (click)="modalSubcategoria(element.id)">
                         <mat-icon fontIcon="create"></mat-icon>
                     </button>
-                    <button mat-mini-fab aria-label="Eliminar subcategoría" (click)="eliminarProducto(element.id)">
+                    <button mat-mini-fab aria-label="Eliminar subcategoría" (click)="eliminarSubcategoria(element.id)">
                         <mat-icon fontIcon="delete"></mat-icon>
                     </button>
                 </td>

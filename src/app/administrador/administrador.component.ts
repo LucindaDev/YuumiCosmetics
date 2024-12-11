@@ -5,6 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormProductosComponent } from './form-productos/form-productos.component';
+import { FormCategoriasComponent } from './form-categorias/form-categorias.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormSubcategoriasComponent } from './form-subcategorias/form-subcategorias.component';
 import { NgIf } from '@angular/common';
 import Swal from 'sweetalert2';
 
@@ -16,17 +19,19 @@ import Swal from 'sweetalert2';
   imports: [MatTableModule, MatIconModule, MatButtonModule, MatDialogModule, NgIf]
 })
 export class AdministradorComponent {
-
+  constructor(private productosService: ProductosService) { }
+  
   selectedTable: string = 'productos';
 
   readonly dialog = inject(MatDialog);
 
-  openDialog(id: number) {
+
+  // LOGICA PARA ABRIR MODALES.
+
+  modalProducto(id: number) {
     const dialogRef = this.dialog.open(FormProductosComponent, {
       data: { id: id }
     });
-
-    console.log(id);
 
     dialogRef.componentInstance.productAdded.subscribe(() => {
       this.getProductos();
@@ -36,8 +41,28 @@ export class AdministradorComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
+  
+  modalCategoria(id: number) {
+    const dialogRef: MatDialogRef<FormCategoriasComponent> = this.dialog.open(FormCategoriasComponent, {
+      data: { id: id }
+    });
 
-  constructor(private productosService: ProductosService) { }
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+  modalSubcategoria(id: number) {
+    const dialogRef = this.dialog.open(FormSubcategoriasComponent, {
+      data: { id: id }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 
   displayedColumns: string[] = ['id', 'nombre', 'marca', 'categoria', 'subcategoria', 'precio', 'acciones'];
   dataSource = [];

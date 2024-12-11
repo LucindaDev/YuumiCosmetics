@@ -36,6 +36,10 @@ export class ProductosService {
     return this.http.get(`http://localhost:8080/categorias/${id}`);
   }
 
+  addCategoria(categoria: any) {
+    return this.http.post('http://localhost:8080/categorias', categoria);
+  }
+
   updateCategoria(id: number, categoria: any) {
     return this.http.put(`http://localhost:8080/categorias/${id}`, categoria);
   }
