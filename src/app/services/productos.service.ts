@@ -32,8 +32,8 @@ export class ProductosService {
     return this.http.get('http://localhost:8080/categorias');
   }
 
-  getCategoriaId(id: number) {
-    return this.http.get(`http://localhost:8080/categorias/${id}`);
+  getCategoriaId(id: number, categoria: any) {
+    return this.http.get(`http://localhost:8080/categorias/${id}`, categoria);
   }
 
   addCategoria(categoria: any) {

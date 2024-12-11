@@ -47,6 +47,10 @@ export class AdministradorComponent {
       data: { id: id }
     });
 
+    dialogRef.componentInstance.categoriaAdded.subscribe(() => {
+      this.getCategorias();
+    });
+
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
     });

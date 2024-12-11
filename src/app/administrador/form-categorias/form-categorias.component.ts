@@ -19,6 +19,7 @@ import { Inject } from '@angular/core';
   styleUrl: './form-categorias.component.scss'
 })
 export class FormCategoriasComponent {
+  @Output() categoriaAdded = new EventEmitter<void>();
 
   categoriaForm: FormGroup;
 
@@ -27,19 +28,17 @@ export class FormCategoriasComponent {
         public dialogRef: MatDialogRef<FormCategoriasComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
     this.categoriaForm = this.fb.group({
-    nombre: ['']
+      nombre: ['']
     });
 
-    if (data.id) {
-    this.categoriasService.getCategoriaId(data.id).subscribe(
+    this.categoriasService.getCategoriaId(data.id, data.nombre).subscribe(
       (categoria: any) => {
-      this.categoriaForm.patchValue(data.nombre);
+        this.categoriaForm.patchValue(categoria);
       },
       (error: any) => {
-      console.error('Error al cargar la categoría', error);
+        console.error('Error al cargar el producto', error);
       }
     );
-    }
   }
 
   onClick() {
@@ -49,10 +48,12 @@ export class FormCategoriasComponent {
       title: 'Formulario inválido',
       text: 'Por favor, complete todos los campos correctamente.'
     });
+
     return;
     }
 
-    if (this.data.id) {
+    if (this.data.id>0) {
+      
     this.categoriasService.updateCategoria(this.data.id, this.categoriaForm.value).subscribe(
       (response: any) => {
       if (response.success) {
@@ -62,7 +63,7 @@ export class FormCategoriasComponent {
         text: 'La categoría ha sido actualizada correctamente.'
         });
         this.categoriaForm.reset();
-        this.dialogRef.close(true);
+        this.categoriaAdded.emit();
       } else {
         Swal.fire({
         icon: 'error',
@@ -89,7 +90,7 @@ export class FormCategoriasComponent {
         text: 'La categoría ha sido agregada correctamente.'
         });
         this.categoriaForm.reset();
-        this.dialogRef.close(true);
+        this.categoriaAdded.emit();
       } else {
         Swal.fire({
         icon: 'error',
