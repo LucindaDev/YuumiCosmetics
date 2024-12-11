@@ -1,1 +1,16 @@
-<p>form-subcategorias works!</p>
+<div class="form__container">
+    <h2 mat-dialog-title class="title">{{ data.id ? 'Editar Subcategoría' : 'Agregar Subcategoría' }}</h2>
+
+    <mat-dialog-content class="mat-typography">
+        <form class="form__categories" [formGroup]="subcategoriaForm">
+            <mat-form-field>
+                <mat-label>Nombre de la subcategoría: </mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onClick()">Guardar</button>
+    </mat-dialog-actions>
+</div>

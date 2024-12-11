@@ -52,8 +52,12 @@ export class ProductosService {
     return this.http.get('http://localhost:8080/subcategorias');
   }
 
-  getSubcategoriaId(id: number) {
+  getSubcategoriaId(id: number, subcategoria: any) {
     return this.http.get(`http://localhost:8080/subcategorias/${id}`);
+  }
+
+  addSubcategoria(subcategoria: any) {
+    return this.http.post('http://localhost:8080/subcategorias', subcategoria);
   }
 
   updateSubcategoria(id: number, subcategoria: any) {
